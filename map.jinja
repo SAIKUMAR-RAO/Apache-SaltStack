@@ -1,0 +1,19 @@
+{% set apache = salt['grains.filter_by']({
+
+  'Debian': {
+    'config': '/etc/apache2/apache2.conf',
+    'config_source': 'salt://apache/files/deb_apache2.conf',
+    'package': 'apache2',
+    'service': 'apache2',
+    'vhosts_loc': '/etc/apache2/sites-available/000-default.conf',
+  },
+
+  'RedHat': {
+    'config': '/etc/httpd/conf/httpd.conf',
+    'config_source': 'salt://apache/files/rh_httpd.conf',
+    'package': 'httpd',
+    'service': 'httpd',
+    'vhosts_loc': '/etc/httpd/vhosts.d/default-vhosts.conf',
+  },
+
+}) %}
